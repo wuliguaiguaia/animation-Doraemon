@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/main.css">
+    <style id="styleTag"></style>
+    <title>Doraemon</title>
+</head>
+
+<body>
+    <audio  id="audios" src="./src/music.mp3" autoplay="autoplay" loop="loop"></audio>
+    <pre id="code"></pre>
+    <div id="btn">
+        <button id="lower">Lower</button>
+        <button id="faster">Faster</button>
+        <button id="change" class="pause">Pause</button>
+        <button id="skip">Skip</button>
+        <button id="messageBtn">Message</button>
+
+    </div>
+    <div id="Doraemon">
+        <h1>Doraemon</h1>
+        <div class="D-wrapper">
+            <div class="D-fly center"></div>
+            <div class="D-move center"></div>
+            <div class="D-foot left"></div>
+            <div class="D-foot right"></div>
+            <div class="D-tripe center"></div>
+
+            <div class="D-arm left"></div>
+            <div class="D-arm right"></div>
+            <div class="D-hand left"></div>
+            <div class="D-hand right"></div>
+            <div class="D-scarf center"></div>
+            <div class="D-head center">
+                <div class="D-eye left"></div>
+                <div class="D-eye right"></div>
+                <div class="D-nose center"></div>
+                <div class="D-lip center"></div>
+                <div class="D-beard left"></div>
+                <div class="D-beard right"></div>
+            </div>
+            <div class="D-bell center"></div>
+        </div>
+    </div>
+    <div id="myScreen"></div>
+    <div id="messageWrapper">
+        <form id="myForm">
+            <input type="text" name="user" placeholder="请输入您的姓名~">
+            <textarea name="text" id="" cols="30" rows="3" placeholder="留言~"></textarea>
+            <input type="submit" value="提 交">
+        </form>
+        <div>
+            <ul id="messageList"></ul>
+        </div>
+    </div>
+
+    <script src="//cdn.jsdelivr.net/npm/leancloud-storage@3.11.0/dist/av-min.js"></script>
+    <script src="./src/main.js"></script>
+</body>
+
+</html>

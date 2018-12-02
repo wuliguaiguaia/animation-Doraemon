@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+*::before,
+*::after {
+    box-sizing: border-box
+}
+
+body {
+    background: #b11635;
+    overflow: hidden;
+}
+
+#code {
+    width: 100vw;
+    background: #b11635;
+    height: 40vh;
+    color: #fff;
+    padding: 10px;  
+    font-family: cursive;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
+
+.D-wrapper {
+    width: 269px;
+    height: 315px;
+    position: relative;
+    left: 50%;
+    margin-left: -135px;
+}
+
+#Doraemon h1 {
+    color: #b11635;
+}
+
+
+.D-wrapper *,
+.D-wrapper *::before,
+.D-wrapper *::after {
+    position: absolute;
+}
+
+.D-wrapper *::before,
+.D-wrapper *::after {
+    content: "";
+}
+
+.D-wrapper *.center {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#Doraemon {
+    width: 100vw;
+    height: 60vh;
+    background: rgb(212, 236, 249);
+}
+
+@keyframes move {
+    from {
+        transform: translateY(100px)
+    }
+
+    to {
+        transform: translateY(-40px)
+    }
+}
+
+@keyframes fly {
+    /*2*/
+    from {
+        transform: rotate3D(0, 1, 0, 0deg);
+    }
+
+    to {
+        transform: rotate3D(0, 1, 0, 360deg);
+    }
+}
+
+#btn{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+#btn button{
+    display: block;
+    width: 64px;
+    padding: 6px 0;
+    margin-bottom: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 12px;
+    color: #b11635;
+    background: #e4e4e4;
+}
+
+/* message */
+#messageWrapper li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+#messageBtn {
+    display: none;
+}
+
+#messageWrapper {
+    display: none;
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    background: #ff9b40;
+    border-radius: 5px;
+    height: 74vh;
+    overflow: auto;
+    transform: translateX(-50%);
+    padding: 30px;
+    width: 95vw;
+    height: 95vh;
+    z-index: 9;
+}
+
+#myForm {
+    display: flex;
+    flex-direction: column;
+
+}
+
+#myForm [name='user'] {
+    padding: 5px;
+    margin-top: 5px;
+}
+
+#myForm [type='submit'] {
+    border-radius: 20px;
+    cursor: pointer;
+    align-self: flex-end;
+    background-color: #b11635;
+    color: #fff;
+    padding: 9px 0;
+    width: 100px;
+}
+
+#myForm textarea {
+    resize: none;
+    margin: 10px 0;
+    padding: 5px;
+}
+
+#myForm input {
+    border: none;
+    outline: none;
+}
+
+#messageList {
+    margin: 10px 0;
+}
+
+#messageList li {
+    border-bottom: 1px solid #d2d1d1;
+    font-size: 14px;
+    padding: 5px 0;
+}
+
+#messageList .name {
+    color: #3f84ce;
+}
+
+#messageList .text {
+    color: #fff
+}
+
+#messageList .time {
+    color: #eae9e9;
+    font-size: 10px;
+    margin-top: 12px;
+}
+
+#myScreen {
+    width: 100vw;
+    height: 100vh;
+    background: rgb(20, 19, 19, .6);
+    position: fixed;
+    top: 0;
+    display: none;
+    z-index: 2
+}
+
+
+
+
