@@ -334,7 +334,7 @@ let text = `/* 今天画一只机器猫~ */
 
 `
 
-let speed = 50,
+let speed = 20,
     timer = null,
     rest = "",
     pre = '',
@@ -357,8 +357,11 @@ btn.onclick = (e) => {
             addCode(pre, rest, speed);
             break;
         case faster:
-            speed = 5;
+            speed = 1;
             addCode(pre, rest, speed);
+            break;
+        case retry:
+            addCode(' ', text, speed);
             break;
         case change:
             if (change.className === 'pause') {
