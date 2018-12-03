@@ -334,70 +334,101 @@ let text = `/* 今天画一只机器猫~ */
 
 `
 
-let speed = 20,
+let duration = 40,
     timer = null,
     rest = "",
     pre = '',
+    app = null;
+btnControl = null;
+
+btnControl = BtnControl();
+addCode(pre, text, btnControl.finish);
+bindEvents();
+
+
+btn.onclick = (e) => {
+
+    switch (e.target) {
+        case lower:
+            duration = 80;
+            break;
+        case faster:
+            duration = 1;
+            break;
+        case retry:
+            duration = 40;
+            btnControl.recover();
+            timer && clearTimeout(timer);
+            addCode("", text);
+            break;
+        case change:
+            if (change.classList.contains("pause")) {
+                timer && clearTimeout(timer);
+                change.innerText = 'Go';
+                change.classList.remove('pause')
+            } else {
+                pre = code.innerHTML;
+                rest = text.slice(pre.length, text.length)
+                addCode(pre, rest, btnControl.finish);
+                change.innerText = 'Pause';
+                change.classList.add('pause')
+            }
+            break;
+        case skip:
+            clearTimeout(timer);
+            btnControl.finish();
+            code.innerHTML = text;
+            styleTag.innerHTML = text;
+            code.scrollTop = code.scrollHeight;
+            break;
+        case messageBtn:
+            messageWrapper.style.display = "block";
+            myScreen.style.display = "block";
+            break;
+    }
+}
+
+setTimeout(() => {
     app = new LearnCloud({
         id: "9M29rGtmAOIqfCwO42Drub6O-gzGzoHsz",
         key: "78lqrKFm181zXjaLQ61677tz",
         AppName: "Message",
         fn: addMessage,
     })
-addCode('', text, speed);
-app.init();
-bindEvents();
-btn.onclick = (e) => {
-    pre = code.innerHTML;
-    rest = text.slice(pre.length, text.length)
-    clearTimeout(timer)
-    switch (e.target) {
-        case lower:
-            speed = 80
-            addCode(pre, rest, speed);
-            break;
-        case faster:
-            speed = 1;
-            addCode(pre, rest, speed);
-            break;
-        case retry:
-            addCode(' ', text, speed);
-            break;
-        case change:
-            if (change.className === 'pause') {
-                change.innerText = 'Go';
-                change.className = 'go'
-            } else {
-                addCode(pre, rest, speed);
-                change.innerText = 'Pause';
-                change.className = 'pause';
-            }
-            break;
-        case skip:
-            code.innerHTML = pre + rest;
-            styleTag.innerHTML = pre + rest;
-            break;
-        case messageBtn:
-            addCode(pre,rest,speed)
-            messageWrapper.style.display = "block";
-            myScreen.style.display = "block";
-            break;
+    app.init();
+}, 0)
 
+
+function BtnControl() {
+    let btnModeDom = btn.querySelectorAll(".mode");
+    return {
+        finish: function () {
+            code.scrollTop = code.scrollHeight;
+            btnModeDom.forEach((item) => {
+                item.disabled = true
+            })
+        },
+        recover() {
+            btnModeDom.forEach((item) => {
+                item.disabled = false
+            })
+        }
     }
+};
 
-}
-
-function addCode(pre, str, time) {
+function addCode(pre, str, fn) {
     let i = 0;
-    timer = setTimeout(function fn() {
+    timer = setTimeout(function run() {
         i++;
         code.innerHTML = pre + str.slice(0, i);
         styleTag.innerHTML = pre + str.slice(0, i);
         code.scrollTop = code.scrollHeight;
         if (i < str.length) {
-            timer = setTimeout(fn, time)
+            timer = setTimeout(run, duration)
+        } else {
+            fn && fn.call()
         }
-    }, time)
+    }, duration)
 }
 
 function LearnCloud(opt) {
