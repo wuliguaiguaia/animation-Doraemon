@@ -1,6 +1,6 @@
 let text = `/* 今天画一只机器猫~ */
 
-/* 先来个。。 这叫什么。。 */
+/* 接下来一步一步介绍~*/
 .D-fly {
     width: 20px;
     height: 10px;
@@ -347,7 +347,6 @@ bindEvents();
 
 
 btn.onclick = (e) => {
-
     switch (e.target) {
         case lower:
             duration = 80;
